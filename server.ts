@@ -20,17 +20,20 @@ const fs = require('fs');
 import 'localstorage-polyfill';
 const templateA = fs.readFileSync(join(DIST_FOLDER, 'index.html')).toString();
 const win = domino.createWindow(templateA);
-win.Object = Object;
-win.Math = Math;
-global['window'] = win;
-global['document'] = win.document;
-global['branch'] = null;
-global['object'] = win.object;
-global['HTMLElement'] = win.HTMLElement;
-global['navigator'] = win.navigator;
-global['localStorage'] = localStorage;
-global['sessionStorage'] = localStorage;
-global['getComputedStyle'] = () => {
+(global as any).window = win;
+(global as any).document = win.document;
+(global as any).branch = null;
+(global as any).object = win.object;
+(global as any).HTMLElement = win.HTMLElement;
+(global as any).navigator = win.navigator;
+(global as any).localStorage = localStorage;
+(global as any).sessionStorage = localStorage;
+(global as any).WebSocket = require('ws');
+(global as any).XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+(global as any).Event = win.Event;
+(global as any).KeyboardEvent = win.Event;
+(global as any).MouseEvent = win.Event;
+(global as any).getComputedStyle = () => {
   return {
     getPropertyValue() {
       return '';

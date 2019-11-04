@@ -29,7 +29,6 @@ const win = domino.createWindow(templateA);
 (global as any).localStorage = localStorage;
 (global as any).sessionStorage = localStorage;
 (global as any).WebSocket = require('ws');
-(global as any).XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
 (global as any).Event = win.Event;
 (global as any).KeyboardEvent = win.Event;
 (global as any).MouseEvent = win.Event;
